@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
+import Dashboard from "./containers/Dashboard";
 
 function App() {
   const navigate = useNavigate();
@@ -73,7 +74,7 @@ function App() {
             element={<LoginForm handleSubmitLogin={handleSubmitLogin} />}
           />
         )}
-        {user && <Route path="/dashboard" element={<h1>dashboard</h1>} />}
+        {user && <Route path="/dashboard" element={<Dashboard />} />}
         <Route path="*" element={<h1>404 NOT FOUND</h1>} />
       </Routes>
     </>
