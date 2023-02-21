@@ -15,6 +15,7 @@ const Accounts = () => {
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
         {users.map((_, index) => (
           <Box
+            key={index}
             sx={{
               border: 1,
               padding: "1rem",
@@ -25,7 +26,7 @@ const Accounts = () => {
           >
             <Typography sx={{ fontSize: "2rem" }}>Recent Deposits</Typography>
             <Typography>0000 0000 0000 0000</Typography>
-            <Typography sx={{ flex: 1, marginTop: "1rem" }}>
+            <Typography component={Box} sx={{ flex: 1, marginTop: "1rem" }}>
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                 <div>Current Balance:</div> <div>$3,024.00</div>
               </Box>

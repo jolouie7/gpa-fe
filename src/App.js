@@ -3,6 +3,9 @@ import axios from "axios";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import Dashboard from "./containers/Dashboard";
+import Sidebar from "./components/Sidebar";
+import Accounts from "./components/Accounts";
+import Transactions from "./components/Transactions";
 
 function App() {
   const navigate = useNavigate();
@@ -73,13 +76,12 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<h1>Home</h1>} />
-        {!user && (
-          <Route
-            path="/login"
-            element={<LoginForm handleSubmitLogin={handleSubmitLogin} />}
-          />
+        {user && (
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route path="accounts" element={<Accounts />} />
+            <Route path="transactions" element={<Transactions />} />
+          </Route>
         )}
-        {user && <Route path="/dashboard" element={<Dashboard />} />}
         <Route path="*" element={<h1>404 NOT FOUND</h1>} />
       </Routes>
     </>

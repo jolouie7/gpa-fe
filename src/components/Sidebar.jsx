@@ -12,17 +12,28 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 
+//TODO: Figure out if I nested routes
+//TODO: FIgure out how to make the sidebar stay when user is logged in
+
 const Sidebar = () => {
+  const username = localStorage.getItem("user");
   return (
     <>
-      <Box sx={{ border: 1, height: "100vh" }}>
-        <ListItemText primary="Hi, Username" />
+      <Box
+        sx={{
+          border: 1,
+          height: "100vh",
+          textAlign: "center",
+          maxWidth: "150px",
+        }}
+      >
+        <ListItemText primary={`Hi, ${username}`} />
         <Divider sx={{ my: 1 }} />
-        <ListItemButton>
-          <ListItemText primary="Accounts" />
+        <ListItemButton component="a" href="/dashboard">
+          <ListItemText primary="Accounts" sx={{ textAlign: "center" }} />
         </ListItemButton>
-        <ListItemButton>
-          <ListItemText primary="Transactions" />
+        <ListItemButton component="a" href="/dashboard/transactions">
+          <ListItemText primary="Transactions" sx={{ textAlign: "center" }} />
         </ListItemButton>
       </Box>
     </>
