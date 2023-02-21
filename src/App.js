@@ -13,17 +13,21 @@ function App() {
   useEffect(() => {
     // Check if the user is already logged in on component mount
     const token = localStorage.getItem("token");
+    const localStorageUser = localStorage.getItem("user");
     console.log("token :", token);
-    if (!token) {
+    console.log("localStorageUser :", localStorageUser);
+    if (!token && !localStorageUser) {
       // logout user
       console.log("logout");
       handleLogout();
     }
+    setUser({ username: localStorageUser });
   }, []);
 
   // Handle logout
   function handleLogout() {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     setUser(null);
     // redirect to homepage aka. login page
     navigate("/login");
@@ -40,6 +44,7 @@ function App() {
       });
       const token = response.data.token;
       localStorage.setItem("token", token);
+      localStorage.setItem("user", username);
       setUser({ username });
       navigate("/dashboard");
     } catch (error) {
