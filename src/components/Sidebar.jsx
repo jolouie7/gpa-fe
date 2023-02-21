@@ -11,9 +11,12 @@ import Divider from "@mui/material/Divider";
 import MenuIcon from "@mui/icons-material/Menu";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
+import { styled } from "@mui/system";
 
-//TODO: Figure out if I nested routes
-//TODO: FIgure out how to make the sidebar stay when user is logged in
+const UserGreetingText = styled("div")({
+  textAlign: "center",
+  fontSize: "1.5rem",
+});
 
 const Sidebar = () => {
   const username = localStorage.getItem("user");
@@ -24,10 +27,10 @@ const Sidebar = () => {
           border: 1,
           height: "100vh",
           textAlign: "center",
-          maxWidth: "150px",
+          maxWidth: 200, //fits 16character username with a font size of 1.5rem
         }}
       >
-        <ListItemText primary={`Hi, ${username}`} />
+        <UserGreetingText>{`Hi, ${username}`}</UserGreetingText>
         <Divider sx={{ my: 1 }} />
         <ListItemButton component="a" href="/dashboard">
           <ListItemText primary="Accounts" sx={{ textAlign: "center" }} />
