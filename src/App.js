@@ -36,6 +36,22 @@ function App() {
     navigate("/login");
   }
 
+  // Handles getting the users info
+  async function getUserInfo() {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    };
+    try {
+      const response = await axios.get(`${apiURL}/api/auth/user/`, config);
+      console.log("response :", response);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   // Handle form submission
   async function handleSubmitLogin(event, username, password) {
     event.preventDefault();
@@ -47,7 +63,11 @@ function App() {
       });
       const token = response.data.token;
       localStorage.setItem("token", token);
-      localStorage.setItem("user", username);
+      const userObj = JSON.stringify({
+        username: username,
+        id: response.data.user_id,
+      });
+      localStorage.setItem("user", userObj);
       setUser({ username });
       navigate("/dashboard");
     } catch (error) {
@@ -76,6 +96,10 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<h1>Home</h1>} />
+        <Route
+          path="/login"
+          element={<LoginForm handleSubmitLogin={handleSubmitLogin} />}
+        />
         {user && (
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="accounts" element={<Accounts />} />
