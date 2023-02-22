@@ -20,32 +20,6 @@ function LoginForm({ handleSubmitLogin }) {
     handleSubmitLogin(e, username, password);
   };
 
-  const renderForm = () => {
-    return (
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input
-            type="text"
-            name="username"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
-        <button type="submit">Login</button>
-      </form>
-    );
-  };
-
   return (
     <>
       <ThemeProvider theme={theme}>

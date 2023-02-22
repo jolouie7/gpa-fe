@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/system";
 import axios from "axios";
 import { displayCurrentBalance } from "../util/util";
+import { apiURL } from "../constants/constant";
 
 const BoxContainer = styled("div")({
   display: "flex",
@@ -16,7 +17,7 @@ const Accounts = () => {
   // Find user accounts and map over them
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/accounts/")
+      .get(`${apiURL}/api/accounts/`)
       .then((response) => {
         setAccounts(response.data);
       })

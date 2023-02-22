@@ -3,15 +3,13 @@ import axios from "axios";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import Dashboard from "./containers/Dashboard";
-import Sidebar from "./components/Sidebar";
 import Accounts from "./components/Accounts";
 import Transactions from "./components/Transactions";
+import { apiURL } from "./constants/constant";
 
 function App() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
-
-  const apiURL = "http://localhost:8000";
 
   useEffect(() => {
     // Check if the user is already logged in on component mount
@@ -32,7 +30,6 @@ function App() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     setUser(null);
-    // redirect to homepage aka. login page
     navigate("/login");
   }
 
@@ -106,7 +103,6 @@ function App() {
             <Route path="transactions" element={<Transactions />} />
           </Route>
         )}
-        <Route path="*" element={<h1>404 NOT FOUND</h1>} />
       </Routes>
     </>
   );

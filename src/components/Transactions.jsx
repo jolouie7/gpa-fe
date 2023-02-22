@@ -9,6 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import axios from "axios";
 import { format } from "date-fns";
 import { displayCurrentBalance } from "../util/util";
+import { apiURL } from "../constants/constant";
 
 // When auth is working. Getting the account number, we can get all the accounts associated with the user
 // There aren't a lot of accounts a user can have so we can just get all of them
@@ -52,7 +53,7 @@ const Transactions = () => {
 
   const fetchAccounts = () => {
     axios
-      .get("http://localhost:8000/api/accounts/")
+      .get(`${apiURL}/api/accounts/`)
       .then((response) => {
         setAccounts(response.data);
       })
@@ -63,7 +64,7 @@ const Transactions = () => {
 
   const fetchTransactions = () => {
     axios
-      .get("http://localhost:8000/api/transactions/")
+      .get(`${apiURL}/api/transactions/`)
       .then((response) => {
         setTransactions(response.data);
         console.log(response.data);
@@ -95,7 +96,7 @@ const Transactions = () => {
           <TableCell>{transaction.id}</TableCell>
           <TableCell>{formattedDate}</TableCell>
           <TableCell>{transaction.transaction_type}</TableCell>
-          <TableCell>{accountNum}</TableCell>
+          <TableCell>****{accountNum.slice(12, 16)}</TableCell>
           <TableCell>{transaction.note}</TableCell>
           <TableCell>
             {transaction.transaction_type === "CREDIT" ? "+" : "-"}
