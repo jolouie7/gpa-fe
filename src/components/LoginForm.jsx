@@ -50,7 +50,7 @@ function LoginForm({ handleSubmitLogin }) {
     <>
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="xs">
-          {/* <CssBaseline /> */}
+          <CssBaseline />
           <Box
             onSubmit={handleSubmit}
             sx={{

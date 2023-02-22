@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-// import Title from "@mui/material/Title";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/system";
 import axios from "axios";
+import { displayCurrentBalance } from "../util/util";
 
 const BoxContainer = styled("div")({
   display: "flex",
@@ -13,7 +13,6 @@ const BoxContainer = styled("div")({
 
 const Accounts = () => {
   const [accounts, setAccounts] = useState([]);
-  const users = ["user1", "user1", "user1", "user1", "user1", "user1"];
   // Find user accounts and map over them
   useEffect(() => {
     axios
@@ -40,18 +39,6 @@ const Accounts = () => {
       " " +
       accountNumber.slice(12, 16)
     );
-  };
-
-  const displayCurrentBalance = (currentBalance) => {
-    let formattedNumber = "";
-    if (currentBalance < 1000) {
-      formattedNumber = currentBalance.toLocaleString("en-US", {
-        minimumFractionDigits: 2,
-      });
-    } else {
-      formattedNumber = currentBalance.toLocaleString("en-US");
-    }
-    return formattedNumber;
   };
 
   return (
@@ -91,36 +78,3 @@ const Accounts = () => {
 };
 
 export default Accounts;
-
-// [
-//   {
-//     "name": "State",
-//     "value": [
-//       {
-//         "id": 1,
-//         "account_number": "3198215108718730",
-//         "user_id": 1,
-//         "current_balance": 5
-//       },
-//       "{account_number: \"6741028104245837\", current_balanc…}"
-//     ],
-//     "subHooks": [],
-//     "hookSource": {
-//       "lineNumber": 43,
-//       "functionName": "Accounts",
-//       "fileName": "http://localhost:3000/main.ce70ec87361f3d8f73f9.hot-update.js",
-//       "columnNumber": 82
-//     }
-//   },
-//   {
-//     "name": "Effect",
-//     "value": "ƒ () {}",
-//     "subHooks": [],
-//     "hookSource": {
-//       "lineNumber": 46,
-//       "functionName": "Accounts",
-//       "fileName": "http://localhost:3000/main.ce70ec87361f3d8f73f9.hot-update.js",
-//       "columnNumber": 51
-//     }
-//   }
-// ]
