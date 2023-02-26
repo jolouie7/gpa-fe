@@ -11,9 +11,6 @@ import { format } from "date-fns";
 import { displayCurrentBalance } from "../util/util";
 import { apiURL } from "../constants/constant";
 
-// When auth is working. Getting the account number, we can get all the accounts associated with the user
-// There aren't a lot of accounts a user can have so we can just get all of them
-
 const columns = [
   { id: "id", label: "Id", minWidth: 20, align: "left" },
   { id: "date", label: "Date", minWidth: 50, align: "left" },
@@ -50,10 +47,15 @@ const columns = [
 const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
   const [accounts, setAccounts] = useState([]);
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const fetchAccounts = () => {
     axios
-      .get(`${apiURL}/api/accounts/`)
+      .get(`${apiURL}/api/accounts/${user.id}/`, {
+        headers: {
+          Authorization: `Token ${localStorage.getItem("token")}`,
+        },
+      })
       .then((response) => {
         setAccounts(response.data);
       })
@@ -64,7 +66,11 @@ const Transactions = () => {
 
   const fetchTransactions = () => {
     axios
-      .get(`${apiURL}/api/transactions/`)
+      .get(`${apiURL}/api/transactions/${user.id}/`, {
+        headers: {
+          Authorization: `Token ${localStorage.getItem("token")}`,
+        },
+      })
       .then((response) => {
         setTransactions(response.data);
         console.log(response.data);
@@ -109,7 +115,7 @@ const Transactions = () => {
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      <TableContainer sx={{ maxHeight: 440 }}>
+      <TableContainer>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>

@@ -14,16 +14,23 @@ const BoxContainer = styled("div")({
 
 const Accounts = () => {
   const [accounts, setAccounts] = useState([]);
-  // Find user accounts and map over them
+  const user = JSON.parse(localStorage.getItem("user"));
+
   useEffect(() => {
-    axios
-      .get(`${apiURL}/api/accounts/`)
-      .then((response) => {
+    const getAccounts = async () => {
+      try {
+        const response = await axios.get(`${apiURL}/api/accounts/${user.id}/`, {
+          headers: {
+            Authorization: `Token ${localStorage.getItem("token")}`,
+          },
+        });
+        console.log("res: ", response.data);
         setAccounts(response.data);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.log(error);
-      });
+      }
+    };
+    getAccounts();
   }, []);
 
   const preventDefault = (event) => {

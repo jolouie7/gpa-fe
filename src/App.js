@@ -108,7 +108,6 @@ function App() {
             <Route path="transactions" element={<Transactions />} />
           </Route>
         )}
-        <Route path="*" element={<h1>404 NOT FOUND</h1>} />
       </Routes>
     </>
   );
