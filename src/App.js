@@ -85,9 +85,14 @@ function App() {
             </li>
           )}
           {user && (
-            <li>
-              <button onClick={handleLogout}>Logout</button>
-            </li>
+            <div>
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+              <li>
+                <button onClick={handleLogout}>Logout</button>
+              </li>
+            </div>
           )}
         </ul>
       </nav>
@@ -103,6 +108,7 @@ function App() {
             <Route path="transactions" element={<Transactions />} />
           </Route>
         )}
+        <Route path="*" element={<h1>404 NOT FOUND</h1>} />
       </Routes>
     </>
   );
