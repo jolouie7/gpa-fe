@@ -65,12 +65,18 @@ const Accounts = () => {
               width: 300,
             }}
           >
-            <Typography sx={{ fontSize: "2rem" }}>Recent Deposits</Typography>
+            <Typography sx={{ fontSize: "2rem" }}>Account Number</Typography>
             <Typography>
               {displayAccountNumber(account.account_number)}
             </Typography>
             <Typography component={Box} sx={{ flex: 1, marginTop: "1rem" }}>
-              <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  marginBottom: ".5rem",
+                }}
+              >
                 <div>Current Balance:</div>{" "}
                 <div>${displayCurrentBalance(account.current_balance)}</div>
               </Box>

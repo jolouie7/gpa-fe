@@ -21,7 +21,7 @@ const Sidebar = () => {
           maxWidth: 200, //fits 16character username with a font size of 1.5rem
         }}
       >
-        <UserGreetingText>{`Hi, ${user.username}`}</UserGreetingText>
+        <UserGreetingText>{`Hi, ${user.username}!`}</UserGreetingText>
         <Divider sx={{ my: 1 }} />
         <ListItemButton component="a" href="/dashboard">
           <ListItemText primary="Accounts" sx={{ textAlign: "center" }} />
