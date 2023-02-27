@@ -33,22 +33,6 @@ function App() {
     navigate("/login");
   }
 
-  // Handles getting the users info
-  async function getUserInfo() {
-    const token = localStorage.getItem("token");
-    const config = {
-      headers: {
-        Authorization: `Token ${token}`,
-      },
-    };
-    try {
-      const response = await axios.get(`${apiURL}/api/auth/user/`, config);
-      console.log("response :", response);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   // Handle form submission
   async function handleSubmitLogin(event, username, password) {
     event.preventDefault();
@@ -108,6 +92,7 @@ function App() {
             <Route path="transactions" element={<Transactions />} />
           </Route>
         )}
+        <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
     </>
   );
