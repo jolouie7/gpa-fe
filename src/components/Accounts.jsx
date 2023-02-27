@@ -10,6 +10,9 @@ import { apiURL } from "../constants/constant";
 const BoxContainer = styled("div")({
   display: "flex",
   flexWrap: "wrap",
+  height: "100%",
+  gap: "2rem",
+  marginLeft: "2rem",
 });
 
 const Accounts = () => {
@@ -60,7 +63,6 @@ const Accounts = () => {
               padding: "1rem",
               height: "150px",
               width: 300,
-              margin: "0 auto",
             }}
           >
             <Typography sx={{ fontSize: "2rem" }}>Recent Deposits</Typography>
