@@ -114,7 +114,7 @@ const Transactions = () => {
   };
 
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden" }}>
+    <Paper sx={{ width: "100%", overflow: "hidden", borderTop: 1 }}>
       <TableContainer>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -123,7 +123,10 @@ const Transactions = () => {
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth }}
+                  style={{
+                    minWidth: column.minWidth,
+                    backgroundColor: "#D3D3D3",
+                  }}
                 >
                   {column.label}
                 </TableCell>
