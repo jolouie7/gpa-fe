@@ -16,7 +16,8 @@ const Sidebar = () => {
       <Box
         sx={{
           border: 1,
-          height: "100vh",
+          minHeight: "100vh",
+          height: "auto",
           textAlign: "center",
           maxWidth: 200, //fits 16character username with a font size of 1.5rem
         }}
