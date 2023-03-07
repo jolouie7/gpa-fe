@@ -15,8 +15,6 @@ function App() {
     // Check if the user is already logged in on component mount
     const token = localStorage.getItem("token");
     const localStorageUser = localStorage.getItem("user");
-    console.log("token :", token);
-    console.log("localStorageUser :", localStorageUser);
     if (!token && !localStorageUser) {
       // logout user
       console.log("logout");
@@ -36,7 +34,6 @@ function App() {
   // Handle form submission
   async function handleSubmitLogin(event, username, password) {
     event.preventDefault();
-    console.log("value :", username, password);
     try {
       const response = await axios.post(`${apiURL}/api/auth/login/`, {
         username,
